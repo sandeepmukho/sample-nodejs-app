@@ -1,0 +1,85 @@
+<html>
+	<head>
+		<title>IR Dcoument Search</title>
+	</head>
+	<body>
+		<style>
+			body{
+			font-family: Arial, sans-serif;
+
+			}
+			.text {
+				border: 1px solid #ccc;
+				width: 200px;
+				height:25px;
+				margin-bottom: 5px;
+			}
+			.serach {
+				border: 1px solid #ccc;
+				font-size:14px;
+				width: 100px;
+				margin: 15px 0px;
+				
+			}
+			.limit {
+			    border: 1px solid #CCC;
+			    margin-left: 27px;
+			    width: 200px;
+			}
+			h1{
+				text-align: center;
+				font-size: 32px;
+				color:#666;	
+				
+			}
+			#irdocTable {
+				border-collapse: collapse;
+				margin: 30px 0px 0px 20px;
+			}
+			#irdocTable tbody tr td{
+				border: 1px solid #ccc;
+				padding: 6px 8px;				
+				color:#666;
+			}
+			#irdocTable thead {
+				background:#eee;
+			}
+			#irdocTable thead tr th {
+				border: 1px solid #ccc;
+				padding: 3px 2px;
+				color:#333;
+			}
+		</style>
+		
+		<h1>"Search Documents"</h1>		
+	 	Title <input type="text" id="title" name="title" class="text" style="margin-left:30"/>
+	 	<input type="checkbox" name="title_RX" id="title_RX" /> RegEx <br />
+		Source <input type="text" id="source" name="source" class="text" style="margin-left:10"/>
+	 	<input type="checkbox" name="source_RX" id="source_RX" /> RegEx <br />
+		Content <input type="text" id="content" name="content" class="text" style="margin-left:5"/>
+	 	<input type="checkbox" name="content_RX" id="content_RX" /> RegEx<br/>	
+	 	Limit <select class="limit" id="recLimit">
+	 		<option value="10">10</option>
+	 		<option value="50">50</option>
+	 		<option value="100">100</option>	 			 		
+	 	</select><br />	
+		<input type="button" name="irSearch" value="Search" id="irSearch" class="serach" />
+		
+		<table id="irdocTable">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Title</th>
+					<th>Source</th>
+					<th>Date</th>
+					<th>Urls</th>
+					<th>Content</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table> 
+		<script src="jquery2.0.3.js" type="text/javascript"></script>
+		<script src="irdoc.js" type="text/javascript"></script>
+	</body>
+</html>
