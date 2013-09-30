@@ -3,9 +3,12 @@ var http = require("http"),
     path = require("path"),
     fs = require("fs"),
     mongoose = require('mongoose'),
-    port = process.argv[2] || 8080;
+    port = process.argv[2] || 8080,
+    dbHostName = process.argv[3] || "localhost",
+	dbPort = process.argv[4] || 27017,
+    dbName = port = process.argv[4] || "test";
 
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect("mongodb://" + dbHostName + ":" + dbPort + "/" + dbName);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
@@ -107,7 +110,7 @@ function find(collectionName, query, skip, limit, response) {
 
 
 
-console.log("Static file server running at\n  => http://localhost:" + port + "/\nCTRL + C to shutdown");
+console.log("Web server running at\n  => http://localhost:" + port + "/\nCTRL + C to shutdown");
 
 
 

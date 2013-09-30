@@ -8,12 +8,15 @@ var fs = require('fs')
   , filename = process.argv[2];
 
 // Read the file and print its contents.
-var fs = require('fs'),
- filename = process.argv[2],
- mongoose = require('mongoose');
+var fs = require('fs'), 
+ mongoose = require('mongoose'),
+ filename = process.argv[2]
+ dbHostName = process.argv[3] || "localhost",
+ dbPort = process.argv[4] || 27017,    
+ dbName = port = process.argv[5] || "test";;
 
 //connect to mongodb
-mongoose.connect('mongodb://localhost/test');
+mongoose.connect("mongodb://" + dbHostName + ":" + dbPort + "/" + dbName);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
 db.once('open', function callback () {
@@ -54,12 +57,12 @@ function processLine(line) { // here's where we do something with a line
 		var obj = JSON.parse(line); // parse the JSON
 		//console.log(j++);
 		formatJSONObj(obj);		
-	}
+	}	
 }
 
 function formatJSONObj(obj) { // here's where we do something with a line
 	obj._id=i++;
-	//console.log(obj.title + '\n\n'); // do something with the data here!
+	console.log("Document Uploaded, Title: " + obj.title ); // do something with the data here!
 	//console.log(JSON.stringify(obj) + '\n\n'); // do something with the data here!
 	
 	obj.date=formatDate(obj.date, obj.source);
@@ -85,21 +88,9 @@ function formatDate(dateStr, type) {
 	}		
 	return formatDt;
 }
-/*
-var express = require('express');
-var app = express();
-app.get('/helloWorld', function(req, res){
-	var body = 'Hello World';
-	res.setHeader('Content-Type', 'text/plain');
-	res.setHeader('Content-Length', body.length);
-	res.end(body);
-});
 
-app.listen(3000);
-console.log('Listening on port 3000');
 
-*/
-
+//console.log("Data Uploaded Ctrl+C to shutdown");
 
 
 
