@@ -18,6 +18,9 @@ node data_upload.js dump.json
 To start Server
 node server.js
 
+Open Url in browser
+
+http://localhost:8080/irdoc.html
 
 
 
